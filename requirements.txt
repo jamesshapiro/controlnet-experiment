@@ -2,5 +2,15 @@ diffusers[torch]==0.17.1
 onnxruntime==1.15.1
 safetensors==0.3.1
 torch==2.0.1+cu117
+torchvision
 transformers==4.30.1
 xformers==0.0.20
+
+accelerate
+ftfy
+tensorboard
+Jinja2
+safetensors
+ulid-py
+opencv-contrib-python==4.8.0.74
+controlnet_aux==0.0.2

@@ -1,0 +1,11 @@
+`cp [other_dir]/token.txt .`
+`docker build .`
+`./build.sh`
+- add "safety_checker=None" to `pipe = StableDiffusionPipeline.from_pretrained(`
+`./build.sh run "a cherry that looks like an orange"`
+
+- possibly modify build.sh to include new volumes in two different places (dev/build?), e.g.:
+```
+-v "$PWD"/weights:/home/huggingface/weights \
+-v "$PWD"/content:/home/huggingface/content \
+```

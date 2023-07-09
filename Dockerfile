@@ -2,6 +2,10 @@ FROM python:3.10-slim-bullseye
 
 RUN rm -rf /usr/local/cuda/lib64/stubs
 
+RUN apt update
+RUN apt install python3-opencv -y
+#RUN apt-get install libgl1-mesa-glx
+
 COPY requirements.txt /
 
 RUN pip install -r requirements.txt \

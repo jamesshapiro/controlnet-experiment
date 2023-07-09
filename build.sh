@@ -28,6 +28,8 @@ dev() {
         -v huggingface:/home/huggingface/.cache/huggingface \
         -v "$PWD"/input:/home/huggingface/input \
         -v "$PWD"/output:/home/huggingface/output \
+        -v "$PWD"/weights:/home/huggingface/weights \
+        -v "$PWD"/content:/home/huggingface/content \
         -it "$CWD"
 }
 
@@ -43,6 +45,8 @@ run() {
         -v huggingface:/home/huggingface/.cache/huggingface \
         -v "$PWD"/input:/home/huggingface/input \
         -v "$PWD"/output:/home/huggingface/output \
+        -v "$PWD"/weights:/home/huggingface/weights \
+        -v "$PWD"/content:/home/huggingface/content \
         "$CWD" "$@"
 }
 
