@@ -42,16 +42,11 @@ def image_grid(imgs, rows, cols):
 
 
 if __name__ == "__main__":
-    # image = load_image(
-    #     "https://pbs.twimg.com/profile_images/1267830833940815872/gN21yPbi_400x400.jpg"
-    # )
-    image = load_image(f'input/portrait.png')
+    image = load_image(
+        "https://pbs.twimg.com/profile_images/1267830833940815872/gN21yPbi_400x400.jpg"
+    )
     print('loaded image')
     image = np.array(image)
-
-    # prompt = sys.argv[2]
-    print(sys.argv[1])
-    prompt = [sys.argv[1]]
 
     low_threshold = 100
     high_threshold = 200
@@ -72,10 +67,10 @@ if __name__ == "__main__":
         # torch_dtype=torch.float16
     )
     pipe.scheduler = UniPCMultistepScheduler.from_config(pipe.scheduler.config)
-    #prompt = "cyborg best quality, ultra high res, artstation trending, highly detailed,  greg rutkowski, thierry doizon, charlie bowater, alphonse mucha, dramatic lighting, (photorealistic:1.4)"
-    #prompt = [t + prompt for t in ["cyborg"]*1]
+    prompt = ", best quality, ultra high res, (photorealistic:1.4)"
+    prompt = [t + prompt for t in ["blue clouds"]*25]
     #prompt = [t + prompt for t in ["George Washington", "Thomas Jefferson", "Theodore Roosevelt", "Abraham Lincoln"]]
-    generator = [torch.Generator(device="cpu").manual_seed(2) for i in range(len(prompt))]
+    #generator = [torch.Generator(device="cpu").manual_seed(2) for i in range(len(prompt))]
     #my_random_int = random.randint(0,1_000_000)
     generator = [torch.Generator(device="cpu").manual_seed(random.randint(0,1_000_000)) for i in range(len(prompt))]
     pipe.enable_model_cpu_offload()
@@ -87,6 +82,6 @@ if __name__ == "__main__":
         generator=generator,
         num_inference_steps=28,
     )
-    image_grid(output.images, 1, 1)
+    image_grid(output.images, 5, 5)
     #image_grid(output.images, 2, 2)
     main()
