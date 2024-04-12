@@ -36,8 +36,8 @@ def image_grid(imgs, rows, cols):
         print(f'generating image #{i}')
         new_ulid = get_ulid()
         img.save(f'output/{new_ulid}.png')
-        grid.paste(img, box=(i % cols * w, i // cols * h))
-    grid.save(f'output/output_grid.png')
+        #grid.paste(img, box=(i % cols * w, i // cols * h))
+    #grid.save(f'output/output_grid.png')
     return grid
 
 
@@ -45,14 +45,15 @@ if __name__ == "__main__":
     # image = load_image(
     #     "https://pbs.twimg.com/profile_images/1267830833940815872/gN21yPbi_400x400.jpg"
     # )
-    image = load_image(f'input/portrait.png')
-    print('loaded image')
+    img_path = sys.argv[2]
+
+    image = load_image(img_path)
+    print(f'loaded image: {img_path}')
     image = np.array(image)
-
-    # prompt = sys.argv[2]
-    print(sys.argv[1])
     prompt = [sys.argv[1]]
+    print(f'{prompt=}')
 
+    
     low_threshold = 100
     high_threshold = 200
 
